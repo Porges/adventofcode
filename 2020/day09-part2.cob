@@ -1,0 +1,98 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. DAY09-PART1.
+
+       DATA DIVISION.
+       LOCAL-STORAGE SECTION.
+       78 LS-BUFFER-SIZE VALUE 25.
+       78 LS-TOTAL-NUMBER-COUNT VALUE 1000.
+      * for part 1
+       77 LS-TOTAL-NUMBERS-READ PIC 9(4) VALUE 0.
+       77 LS-NUMBER PIC 9(20).
+       77 LS-INDEX PIC 9(2) VALUE 1.
+       77 LS-INDEX-SEARCH1 PIC 9(4).
+       77 LS-INDEX-SEARCH2 PIC 9(4).
+       77 LS-SUM PIC 9(20).
+       01 LS-BUFFER.
+           05 LS-ELEMENT PIC 9(20) VALUE 0 OCCURS LS-BUFFER-SIZE TIMES.
+      * for part 2
+       77 LS-TARGET PIC 9(20) VALUE 0.
+       77 LS-MIN PIC 9(20).
+       77 LS-MAX PIC 9(20).
+       01 LS-ALL-NUMBERS.
+           05 LS-NUMBERS PIC 9(20) VALUE 0 OCCURS LS-TOTAL-NUMBER-COUNT
+           TIMES.
+
+       PROCEDURE DIVISION.
+           PERFORM READ-NUMBER THRU MOVE-TO-BUFFERS LS-BUFFER-SIZE
+           TIMES.
+           PERFORM PART1 UNTIL LS-TOTAL-NUMBERS-READ EQUAL
+           LS-TOTAL-NUMBER-COUNT.
+           PERFORM PART2.
+           STOP RUN.
+
+       READ-NUMBER.
+           ACCEPT LS-NUMBER ON EXCEPTION EXIT SECTION.
+
+       MOVE-TO-BUFFERS.
+           MOVE LS-NUMBER TO LS-ELEMENT(LS-INDEX).
+           MOVE LS-NUMBER TO LS-NUMBERS(LS-TOTAL-NUMBERS-READ).
+           ADD 1 TO LS-INDEX.
+           ADD 1 TO LS-TOTAL-NUMBERS-READ.
+           IF LS-INDEX GREATER THAN LS-BUFFER-SIZE
+                   SET LS-INDEX TO 1
+           END-IF.
+
+       PART1.
+           PERFORM READ-NUMBER.
+           PERFORM FIND-MATCH.
+           PERFORM MOVE-TO-BUFFERS.
+
+       FIND-MATCH.
+           PERFORM VARYING LS-INDEX-SEARCH1 FROM 1 BY 1 UNTIL
+                   LS-INDEX-SEARCH1>LS-BUFFER-SIZE
+                   AFTER LS-INDEX-SEARCH2 FROM 1 BY 1
+                   UNTIL LS-INDEX-SEARCH2>LS-BUFFER-SIZE
+
+                   IF LS-ELEMENT(LS-INDEX-SEARCH1) NOT EQUAL
+                           LS-ELEMENT(LS-INDEX-SEARCH2) THEN
+
+                           ADD LS-ELEMENT(LS-INDEX-SEARCH1) TO
+                           LS-ELEMENT(LS-INDEX-SEARCH2) GIVING LS-SUM
+
+                           IF LS-SUM EQUAL LS-NUMBER
+                           THEN EXIT PERFORM END-IF
+                   END-IF
+           END-PERFORM.
+
+           IF LS-SUM NOT EQUAL LS-NUMBER
+                   DISPLAY "NOT FOUND " LS-NUMBER
+                   SET LS-TARGET TO LS-NUMBER
+           END-IF.
+
+       PART2.
+           PERFORM VARYING LS-INDEX-SEARCH1 FROM 1 BY 1 UNTIL
+                   LS-INDEX-SEARCH1>LS-TOTAL-NUMBER-COUNT
+
+                   SET LS-SUM TO 0
+                   SET LS-MAX TO 0
+                   SET LS-MIN TO 99999999999999999999
+
+                   PERFORM VARYING LS-INDEX-SEARCH2
+                   FROM LS-INDEX-SEARCH1 BY 1
+                   UNTIL LS-INDEX-SEARCH2>LS-TOTAL-NUMBER-COUNT
+                           ADD LS-NUMBERS(LS-INDEX-SEARCH2) TO LS-SUM
+                           COMPUTE LS-MAX = FUNCTION MAX
+                           (LS-NUMBERS(LS-INDEX-SEARCH2) LS-MAX)
+                           COMPUTE LS-MIN = FUNCTION MIN
+                           (LS-NUMBERS(LS-INDEX-SEARCH2) LS-MIN)
+                           IF LS-SUM GREATER THAN OR EQUAL LS-TARGET
+                           THEN EXIT PERFORM END-IF
+                   END-PERFORM
+
+                   IF LS-SUM EQUAL LS-TARGET THEN EXIT PERFORM END-IF
+           END-PERFORM.
+
+           IF LS-SUM EQUAL LS-TARGET THEN
+                   COMPUTE LS-SUM = LS-MIN + LS-MAX
+                   DISPLAY "MIN " LS-MIN " MAX " LS-MAX " SUM " LS-SUM
+           END-IF.
