@@ -1,0 +1,20 @@
+* Rock, Paper, Scissors
+    A = 1 
+    B = 2
+    C = 3
+* Goal: Lose, Draw, Win
+    X = 2
+    Y = 0
+    Z = 1
+* Translate goal to points
+    SCORES = TABLE()
+    SCORES['X'] = 0
+    SCORES['Y'] = 3
+    SCORES['Z'] = 6
+LOOP 
+    TRIM(INPUT) ANY('ABC') . THEIRS ' ' ANY('XYZ') . GOAL :F(ENDING)
+    MINE = REMDR($THEIRS - 1 + $GOAL, 3) + 1
+    TOTAL = TOTAL + MINE + SCORES[GOAL] :(LOOP)
+ENDING
+    OUTPUT = 'TOTAL: ' TOTAL
+END

@@ -1,0 +1,17 @@
+* Rock, Paper, Scissors
+    A = X = 1 
+    B = Y = 2
+    C = Z = 3
+LOOP 
+    TRIM(INPUT) ANY('ABC') . THEIRS ' ' ANY('XYZ') . MINE :F(ENDING)
+* DRAW = 3 pts
+    SCORE = EQ($MINE, $THEIRS) 3 :S(OK)
+* WIN = 6 pts
+    SCORE = EQ(REMDR($THEIRS, 3), $MINE - 1) 6 :S(OK)
+* LOSS = 0 pts
+    SCORE = 0
+OK
+    TOTAL = TOTAL + $MINE + SCORE :(LOOP)
+ENDING
+    OUTPUT = 'TOTAL: ' TOTAL
+END
