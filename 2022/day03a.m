@@ -1,7 +1,7 @@
 	set sum=0
-	for  do
-	. read line write:$zeof sum,! quit:$zeof
-	. set sum=sum+$$processline(line)
+	for  read line quit:$zeof  set sum=sum+$$processline(line)
+	write sum,!
+	halt
 
 processline(line)
 	set len=$Length(line)/2
