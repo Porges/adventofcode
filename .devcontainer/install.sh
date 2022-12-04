@@ -11,4 +11,12 @@ cd /tmp
 rm -r "$tmpdir"
 
 apt-get update 
-apt-get install -y fis-gtm 
+apt-get install -y fis-gtm cmake
+
+tmpdir=$(mktemp -d)
+git clone https://github.com/VorpalBlade/cfunge
+mkdir cfunge/build
+cd cfunge/build
+cmake .. -DUSE_NCURSES=OFF && make && make install
+cd /tmp
+rm -r "$tmpdir"

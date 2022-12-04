@@ -25,3 +25,9 @@ $ export gtm_dist=/usr/lib/x86_64-linux-gnu/fis-gtm/V6.3-014_x86_64
 $ $gtm_dist/mumps -run day03a < input3.txt
 $ $gtm_dist/mumps -run day03b < input3.txt
 ```
+
+# Day 4 – Befunge 98
+
+```console
+$ cfunge -S day-04-a.bf98 < input4.txt
+```
