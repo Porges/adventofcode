@@ -30,4 +30,5 @@ $ $gtm_dist/mumps -run day03b < input3.txt
 
 ```console
 $ cfunge -S day-04-a.bf98 < input4.txt
+$ cfunge -S day-04-b.bf98 < input4.txt
 ```
