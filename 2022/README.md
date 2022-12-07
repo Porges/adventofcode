@@ -37,4 +37,5 @@ $ cfunge -S day-04-b.bf98 < input4.txt
 
 ```console
 $ runghc day-05-a.hs < input5.txt
+$ runghc day-05-b.hs < input5.txt
 ```
