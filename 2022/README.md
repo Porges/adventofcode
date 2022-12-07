@@ -39,3 +39,10 @@ $ cfunge -S day-04-b.bf98 < input4.txt
 $ runghc day-05-a.hs < input5.txt
 $ runghc day-05-b.hs < input5.txt
 ```
+
+# Day 6 – Perl
+
+```console
+$ perl day-06-a.pl < input6.txt
+$ perl day-06-b.pl < input6.txt
+```
