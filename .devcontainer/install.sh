@@ -11,7 +11,7 @@ cd /tmp
 rm -r "$tmpdir"
 
 apt-get update 
-apt-get install -y fis-gtm cmake
+apt-get install -y fis-gtm cmake ghc
 
 tmpdir=$(mktemp -d)
 git clone https://github.com/VorpalBlade/cfunge
