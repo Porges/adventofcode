@@ -11,7 +11,7 @@ cd /tmp
 rm -r "$tmpdir"
 
 apt-get update 
-apt-get install -y fis-gtm cmake ghc
+apt-get install -y fis-gtm cmake ghc gnucobol4
 
 tmpdir=$(mktemp -d)
 git clone https://github.com/VorpalBlade/cfunge

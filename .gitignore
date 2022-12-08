@@ -1,2 +1,6 @@
 *.o
 *.txt
+
+# binaries
+day-07-a
+day-07-b

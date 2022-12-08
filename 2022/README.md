@@ -46,3 +46,10 @@ $ runghc day-05-b.hs < input5.txt
 $ perl day-06-a.pl < input6.txt
 $ perl day-06-b.pl < input6.txt
 ```
+
+# Day 7 – Cobol
+
+```console
+$ cobc -x day-07-a.cob && ./day-07-a  < input7.txt
+$ cobc -x day-07-b.cob && ./day-07-b  < input7.txt
+```
