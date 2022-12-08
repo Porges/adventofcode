@@ -53,3 +53,10 @@ $ perl day-06-b.pl < input6.txt
 $ cobc -x day-07-a.cob && ./day-07-a  < input7.txt
 $ cobc -x day-07-b.cob && ./day-07-b  < input7.txt
 ```
+
+# Day 8 – Julia
+
+```console
+$ /opt/julia/bin/julia day-08-a.jl  < test8.txt
+$ /opt/julia/bin/julia day-08-b.jl  < test8.txt
+```
