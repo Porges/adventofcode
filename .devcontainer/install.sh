@@ -11,7 +11,7 @@ cd /tmp
 rm -r "$tmpdir"
 
 apt-get update 
-apt-get install -y fis-gtm cmake ghc gnucobol4
+apt-get install -y fis-gtm cmake ghc gnucobol4 gfortran aplus-fsf
 
 tmpdir=$(mktemp -d)
 git clone https://github.com/VorpalBlade/cfunge
