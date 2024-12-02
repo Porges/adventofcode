@@ -1,11 +1,12 @@
 {
-    L[NR] = $1
+    L[$1] += 1
     R[$2] += 1
 }
 
 END {
-    for (i = 1; i <= NR; i++) {
-        RESULT += L[i] * R[L[i]]
+    for (n in L) {
+        RESULT += n * L[n] * R[n]
     }
+
     print RESULT
 }

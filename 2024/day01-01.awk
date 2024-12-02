@@ -3,15 +3,13 @@
     R[NR] = $2
 }
 
-function abs(v) {
-    return v < 0 ? -v : v
-}
+function abs(x) { return x < 0 ? -x : x }
 
 END {
     asort(L)
     asort(R)
-    for (i = 1; i <= NR; i++) {
-        SUM += abs(L[i] - R[i])
+    for (ix in L) {
+        SUM += abs(L[ix] - R[ix])
     }
     print SUM
 }
