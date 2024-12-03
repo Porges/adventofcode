@@ -1,0 +1,6 @@
+        N = SPAN('0123456789')
+READ    LINE = INPUT :F(DONE)
+NEXT    LINE 'mul(' N . X ',' N . Y ')' REM . LINE :F(READ)
+        TOTAL = TOTAL + (X * Y) :(NEXT)
+DONE    OUTPUT = 'Answer: ' TOTAL
+END

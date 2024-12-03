@@ -1,0 +1,8 @@
+        N = SPAN('0123456789')
+        ON = "do"
+READ    LINE = INPUT :F(DONE)
+NEXT    LINE (("don't" | "do") . ON '()' | 'mul(' N . X ',' N . Y ')') REM . LINE :S($ON) F(READ)
+DO      TOTAL = TOTAL + (X * Y)
+DON'T   X = 0 :(NEXT)
+DONE    OUTPUT = 'Answer: ' TOTAL
+END
