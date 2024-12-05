@@ -20,3 +20,7 @@ $ runhaskell day02-02.hs < input2
 $ snobol4 day03-01.sno < input3
 $ snobol4 day03-02.sno < input3
 ```
+
+# Day 4 – APL
+
+Load it up in Dyalog APL.
