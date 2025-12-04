@@ -1,0 +1,3 @@
+input ← '@'= ⊃⎕NGET 'input4.txt' 2
+movable ← (5> {+/,⍵} ⌺ 3 3) ∧ ⊢
+⎕ ← +/, movable input
