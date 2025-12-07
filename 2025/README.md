@@ -29,3 +29,9 @@ With Dyalog APL installed, run:
 $ ./day04-01.apls
 $ ./day04-02.apls
 ```
+
+## Day 5 – Factor
+
+```console
+$ Get-Content 'input5.txt' | factor.com day05.factor
+```
