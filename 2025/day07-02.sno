@@ -1,0 +1,17 @@
+        BEAMS = ARRAY('1000')
+        LINE = INPUT
+        LINE 'S' @CUR = '|'
+        BEAMS<CUR> = 1
+NEXT    LAST_LINE = LINE
+        LINE = INPUT :F(DONE)
+AGAIN   LAST_LINE '|' @CUR = '#' :F(NEXT)
+        LINE NOTANY('^') POS(CUR) = '|' :S(AGAIN) F(SPLIT)
+SPLIT   BEAMS<CUR - 1> = BEAMS<CUR - 1> + BEAMS<CUR>
+        BEAMS<CUR + 1> = BEAMS<CUR + 1> + BEAMS<CUR>
+        BEAMS<CUR> = 0
+        LINE '.' POS(CUR + 1) = '|'
+        LINE '.' POS(CUR - 1) = '|' :(AGAIN)
+DONE    IX = IX + 1
+        TOTAL = TOTAL + BEAMS<IX> :S(DONE)
+        OUTPUT = TOTAL
+END
