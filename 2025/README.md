@@ -41,3 +41,10 @@ $ Get-Content 'input5.txt' | factor.com day05.factor
 ```
 $ csi -s day06.scm < input6.txt
 ```
+
+## Day 7 – Snobol
+
+```
+$ snobol4 day07-01.sno < input7.txt
+$ snobol4 day07-02.sno < input7.txt
+```
