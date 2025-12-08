@@ -1,0 +1,11 @@
+        LINE = INPUT
+        LINE 'S' = '|'
+NEXT    LAST_LINE = LINE
+        LINE = INPUT :F(DONE)
+AGAIN   LAST_LINE '|' @CUR = '#' :F(NEXT)
+        LINE NOTANY('^') POS(CUR) = '|' :S(AGAIN) F(SPLIT)
+SPLIT   SPLITS = SPLITS + 1
+        LINE '.' POS(CUR + 1) = '|'
+        LINE '.' POS(CUR - 1) = '|' :(AGAIN)
+DONE    OUTPUT = SPLITS
+END
