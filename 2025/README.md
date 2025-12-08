@@ -35,3 +35,9 @@ $ ./day04-02.apls
 ```console
 $ Get-Content 'input5.txt' | factor.com day05.factor
 ```
+
+## Day 6 – (Chicken) Scheme
+
+```
+$ csi -s day06.scm < input6.txt
+```
