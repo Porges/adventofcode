@@ -4,15 +4,15 @@ IN: aoc2025.day5
   { [ [ first ] [ last ] bi* <= ]
     [ [ last ] [ first ] bi* >= ] } 2&& ;
 
-: merge ( i1 i2 -- i )
-  [ [ first ] bi@ min ] [ [ last ] bi@ max ] 2bi 2array ;
+: merge ( i1 i2 -- i' )
+  [ overlap? ] 2check
+    [ [ [ first ] bi@ min ] [ [ last ] bi@ max ] 2bi 2array 1array ]
+    [ 2array ] if ;
 
-: merge-into ( ranges i -- ranges' ) {
-  { [ over empty? ] [ suffix ] }
-  { [ over last [ overlap? ] 2check ]
-    [ merge [ but-last ] dip suffix ] }
-  [ drop suffix ]
-  } cond ;
+: merge-into ( ranges i -- ranges' )
+  over empty?
+    [ suffix ]
+    [ over last swap merge [ but-last ] dip append ] if ;
 
 : load-data ( -- inputs ranges )
   read-lines { "" } split1
