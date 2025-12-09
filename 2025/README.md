@@ -48,3 +48,9 @@ $ csi -s day06.scm < input6.txt
 $ snobol4 day07-01.sno < input7.txt
 $ snobol4 day07-02.sno < input7.txt
 ```
+## Day 8 – Fortran
+
+```
+$ gfortran -O2 day08-01.f90 < input8.txt
+$ gfortran -O2 day08-02.f90 < input8.txt
+```
